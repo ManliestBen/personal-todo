@@ -2,8 +2,9 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
-
+require('dotenv').config();
 require('./config/database');
+
 
 var todosRouter = require('./routes/api/todos');
 
