@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 import {Route, NavLink} from 'react-router-dom';
 import './App.css';
 import * as todoAPI from './services/todos-api';
+import * as shoppingAPI from './services/shopping-api';
 import TodoListPage from './pages/TodoListPage/TodoListPage';
 import AddTodoPage from './pages/AddTodoPage/AddTodoPage';
 import EditTodoPage from './pages/EditTodoPage/EditTodoPage';
+import ShoppingListPage from './pages/ShoppingListPage/ShoppingListPage';
 
 
 class App extends Component {
   state = {
-    todos: []
+    todos: [],
+    shopping: []
   };
 
   handleAddTodo = async newTodoData => {
@@ -37,6 +40,13 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
+  handleDeleteShopping = async id => {
+    await shoppingAPI.deleteOne(id);
+    this.setState(state => ({
+      shopping: state.shopping.filter(s => s._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+
   async componentDidMount() {
     const todos = await todoAPI.getAll();
     this.setState({todos});
@@ -51,6 +61,8 @@ class App extends Component {
             <NavLink exact to='/'>To-Do List</NavLink>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/add'>Add To-Do</NavLink>
+            &nbsp;&nbsp;&nbsp;
+            <NavLink exact to='/shop'>Shopping List</NavLink>
           </nav>
         </header>
         <main>
@@ -69,6 +81,12 @@ class App extends Component {
             <EditTodoPage
               handleUpdateTodo={this.handleUpdateTodo}
               location={location}
+            />
+          } />
+          <Route exact path='/shop' render={({history}) => 
+            <ShoppingListPage
+              shopping={this.state.shopping}
+              handleDeleteShopping={this.handleDeleteShopping}
             />
           } />
         </main>
