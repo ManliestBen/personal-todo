@@ -19,7 +19,7 @@ function ListItem({shopping, handleDeleteShopping}) {
             </button>
             </dd>
             </dl>
-          
+            
         </div>
       );
 }

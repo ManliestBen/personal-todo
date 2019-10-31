@@ -23,7 +23,10 @@ class ShoppingListPage extends Component {
           invalidForm: !this.formRef.current.checkValidity()
         });
       };
-
+    
+    handlePrint = e => {
+      window.print();
+    }
 
     render() {
     return (
@@ -38,7 +41,7 @@ class ShoppingListPage extends Component {
             />
           )}
           <p>Add Item:</p>
-          <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
+          <form ref={this.formRef} className="formadjust" autoComplete="off" onSubmit={this.handleSubmit}>
                 <input
                 className="form-control"
                 name="item"
@@ -54,7 +57,7 @@ class ShoppingListPage extends Component {
                 placeholder="taco"
                 
                 >
-                    <option value="" selected>Choose Category</option>
+                    <option value="">Choose Category</option>
                     <option>Deli</option>
                     <option>Bakery</option>
                     <option>Produce</option>
@@ -73,7 +76,8 @@ class ShoppingListPage extends Component {
                     className="btn additem"
                     disabled={this.state.invalidForm}
                 >Add Item</button>
-
+          
+          <button className="btn formbtn btn-success" onClick={this.handlePrint} >Print The List</button>
           </form>
         </div>
       </>

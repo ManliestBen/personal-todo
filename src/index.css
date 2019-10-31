@@ -55,3 +55,13 @@ dd {
   display: flex;
   justify-content: space-between;
 }
+
+.formbtn {
+  vertical-align: top;
+  margin-left: 27px;
+  
+}
+
+.formadjust {
+  justify-content: space-between;
+}
