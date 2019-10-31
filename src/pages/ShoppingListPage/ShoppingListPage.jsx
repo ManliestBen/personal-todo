@@ -40,8 +40,9 @@ class ShoppingListPage extends Component {
               handleDeleteShopping={this.props.handleDeleteShopping}
             />
           )}
-          <p>Add Item:</p>
+          
           <form ref={this.formRef} className="formadjust" autoComplete="off" onSubmit={this.handleSubmit}>
+          <p>Add Item:</p>
                 <input
                 className="form-control"
                 name="item"

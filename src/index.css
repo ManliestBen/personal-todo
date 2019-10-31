@@ -40,7 +40,8 @@ a.active {
 }
 
 dl {
-  margin-bottom: 0;
+  margin-bottom: 0px;
+  padding: 0px;
 }
 
 .margin-left-10 {
@@ -63,5 +64,10 @@ dd {
 }
 
 .formadjust {
+  margin-top: 40px;
   justify-content: space-between;
+}
+
+.panel-default {
+  margin: 2px;
 }
