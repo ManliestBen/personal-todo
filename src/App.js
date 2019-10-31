@@ -26,7 +26,7 @@ class App extends Component {
     const newShopping = await shoppingAPI.create(newShoppingData);
     this.setState(state => ({
       shopping: [...state.shopping, newShopping]
-    }), () => this.props.history.push('/'));
+    }), () => this.props.history.push('/shop'));
   }
 
   handleUpdateTodo = async updatedTodoData => {
@@ -47,7 +47,7 @@ class App extends Component {
     );
     this.setState(
       {shopping: newShoppingArray},
-      () => this.props.history.push('/')
+      () => this.props.history.push('/shop')
     );
   }
 
@@ -62,7 +62,7 @@ class App extends Component {
     await shoppingAPI.deleteOne(id);
     this.setState(state => ({
       shopping: state.shopping.filter(s => s._id !== id)
-    }), () => this.props.history.push('/'));
+    }), () => this.props.history.push('/shop'));
   }
 
   async componentDidMount() {
@@ -107,6 +107,7 @@ class App extends Component {
             <ShoppingListPage
               shopping={this.state.shopping}
               handleDeleteShopping={this.handleDeleteShopping}
+              handleAddShopping={this.handleAddShopping}
             />
           } />
         </main>
