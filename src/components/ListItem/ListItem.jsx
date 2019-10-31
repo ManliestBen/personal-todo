@@ -5,18 +5,20 @@ function ListItem({shopping, handleDeleteShopping}) {
     return (
         <div className='panel panel-default'>
           
-          <div className='panel-body'>
+          
             <dl>
-              <dd>{shopping.item}</dd>
-              <dd>{shopping.category}</dd>
-            </dl>
-          </div>
+              <dd>{shopping.item} 
+              {shopping.category}
+            
+          
             <button
-              className='btn btn-xs btn-danger margin-left-10'
+              className='btn btn-xs btn-danger delitem'
               onClick={() => handleDeleteShopping(shopping._id)}
             >
               Delete
             </button>
+            </dd>
+            </dl>
           
         </div>
       );

@@ -70,7 +70,7 @@ class ShoppingListPage extends Component {
                 </select>
                 <button
                     type="submit"
-                    className="btn"
+                    className="btn additem"
                     disabled={this.state.invalidForm}
                 >Add Item</button>
 

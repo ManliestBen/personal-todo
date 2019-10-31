@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -44,4 +45,13 @@ dl {
 
 .margin-left-10 {
   margin-left: 10px;
+}
+
+.additem {
+  margin-bottom: 100px;
+}
+
+dd {
+  display: flex;
+  justify-content: space-between;
 }
