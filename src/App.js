@@ -21,6 +21,13 @@ class App extends Component {
       todos: [...state.todos, newTodo]
     }), () => this.props.history.push('/'));
   }
+  
+  handleAddShopping = async newShoppingData => {
+    const newShopping = await shoppingAPI.create(newShoppingData);
+    this.setState(state => ({
+      shopping: [...state.shopping, newShopping]
+    }), () => this.props.history.push('/'));
+  }
 
   handleUpdateTodo = async updatedTodoData => {
     const updatedTodo = await todoAPI.update(updatedTodoData);
@@ -29,6 +36,17 @@ class App extends Component {
     );
     this.setState(
       {todos: newTodosArray},
+      () => this.props.history.push('/')
+    );
+  }
+
+  handleUpdateShopping = async updatedShoppingData => {
+    const updatedShopping = await shoppingAPI.update(updatedShoppingData);
+    const newShoppingArray = this.state.shopping.map(s=>
+      s._id === updatedShopping._id ? updatedShopping : s
+    );
+    this.setState(
+      {shopping: newShoppingArray},
       () => this.props.history.push('/')
     );
   }
@@ -48,8 +66,10 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const todos = await todoAPI.getAll();
-    this.setState({todos});
+    const todosFromAPI = await todoAPI.getAll();
+    this.setState({todos: todosFromAPI});
+    const shoppingFromAPI = await shoppingAPI.getAll();
+    this.setState({shopping: shoppingFromAPI});
   }
 
   render() {
