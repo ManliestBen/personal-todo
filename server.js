@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
+var cors = require('cors');
 require('dotenv').config();
 require('./config/database');
 
@@ -11,6 +12,7 @@ var shoppingRouter = require('./routes/api/shopping');
 
 var app = express();
 
+app.use(cors());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,6 +27,6 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
+app.listen(port, '0.0.0.0', function() {
     console.log(`Express app listening on port ${port}`);
 });

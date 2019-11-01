@@ -1,7 +1,7 @@
-const BASE_URL = '/api/todos';
+const BASE_URL = 'http://manliestben.zapto.org:3001/api/todos';
 
 export function getAll() {
-    return fetch(BASE_URL)
+    return fetch('http://manliestben.zapto.org:3001/api/todos')
     .then(res => res.json());
 }
 

@@ -1,4 +1,4 @@
-const BASE_URL = '/api/shopping';
+const BASE_URL = 'http://manliestben.zapto.org:3001/api/shopping';
 
 export function getAll() {
     return fetch(BASE_URL)
